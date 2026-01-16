@@ -1,0 +1,12 @@
+# Environment
+.env
+
+# Docker / MySQL data
+mysql_data
+**/var/lib/mysql
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
