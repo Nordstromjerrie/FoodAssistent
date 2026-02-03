@@ -10,3 +10,7 @@ mysql_data
 .idea/
 .DS_Store
 Thumbs.db
+.env.example
+docker-compose.yml
+.env.example
+.env.example

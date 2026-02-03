@@ -11,3 +11,10 @@ public class BackendApplication {
 	}
 
 }
+
+
+
+/*        environment:
+  MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  MYSQL_DATABASE: ${MYSQL_DATABASE}
+    */
