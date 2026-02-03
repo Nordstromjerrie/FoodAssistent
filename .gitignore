@@ -12,5 +12,4 @@ mysql_data
 Thumbs.db
 .env.example
 docker-compose.yml
-docker-compose.yml
-docker-compose.yml
+application.yml
