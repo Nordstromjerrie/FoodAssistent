@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
-
 @Entity
+@Table(name = "recipes")
 public class RecipeEntity {
     @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -14,14 +14,14 @@ private int id;
 private String title;
 private String instructions;
 @Column(name = "cooking_time")
-    private String cookingTime;
+    private Integer cookingTime;
 private enum difficulty {
     easy, medium, hard
 };
-@Column(name = "created_at")
+/*@Column(name = "created_at")
     private LocalDate createdDate;
 @Column(name = "updated_at")
-    private LocalDate updatedDate;
+    private LocalDate updatedDate; */
 
     public int getId() {
         return id;
@@ -47,14 +47,14 @@ private enum difficulty {
         this.instructions = instructions;
     }
 
-    public String getCookingTime() {
+    public Integer getCookingTime() {
         return cookingTime;
     }
 
-    public void setCookingTime(String cookingTime) {
+    public void setCookingTime(Integer cookingTime) {
         this.cookingTime = cookingTime;
     }
-
+    /*
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -70,5 +70,5 @@ private enum difficulty {
     public void setUpdatedDate(LocalDate updatedDate) {
         this.updatedDate = updatedDate;
     }
-
+        */
 }
