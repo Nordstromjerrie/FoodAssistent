@@ -26,11 +26,11 @@ public class RecipeDto {
         Instructions = instructions;
     }
 
-    public Integer getCockingTime() {
+    public Integer getCookingTime() {
         return cookingTime;
     }
 
-    public void setCockingTime(Integer cockingTime) {
+    public void setCookingTime(Integer cockingTime) {
         this.cookingTime = cockingTime;
     }
 }
