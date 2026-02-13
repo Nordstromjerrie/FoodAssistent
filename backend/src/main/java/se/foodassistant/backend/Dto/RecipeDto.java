@@ -8,7 +8,7 @@ public class RecipeDto {
     @JsonProperty("Instructions")
     String Instructions;
     @JsonProperty("cookingTime")
-    Integer cockingTime;
+    Integer cookingTime;
 
     public String getTitle() {
         return title;
@@ -27,10 +27,10 @@ public class RecipeDto {
     }
 
     public Integer getCockingTime() {
-        return cockingTime;
+        return cookingTime;
     }
 
     public void setCockingTime(Integer cockingTime) {
-        this.cockingTime = cockingTime;
+        this.cookingTime = cockingTime;
     }
 }
