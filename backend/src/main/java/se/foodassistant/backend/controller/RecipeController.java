@@ -1,13 +1,12 @@
-package se.foodassistant.backend.Controller;
+package se.foodassistant.backend.controller;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.foodassistant.backend.Dto.RecipeDto;
+import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
 import se.foodassistant.backend.Service.RecipeService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/recipe")
@@ -21,4 +20,11 @@ public class RecipeController {
     public RecipeEntity createNewPlayer(@RequestBody RecipeDto dto){
     return recipeService.createNewRecipe(dto);
     }
+
+
+    @GetMapping("/titles")
+    public List<RecipeTitleDto> getRecipeTitles() {
+        return recipeService.getAllRecipeTitles();
+    }
+
 }
