@@ -1,7 +1,8 @@
 package se.foodassistant.backend.Dto;
 
 public class RecipeTitleDto {
-    private final String title;
+
+    private String title;
 
     public RecipeTitleDto(String title) {
         this.title = title;
@@ -10,4 +11,14 @@ public class RecipeTitleDto {
     public String getTitle() {
         return title;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
+
+
+
+
+
+

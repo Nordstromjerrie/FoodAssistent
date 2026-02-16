@@ -22,9 +22,9 @@ public class RecipeController {
     }
 
 
-    @GetMapping("/titles")
-    public List<RecipeTitleDto> getRecipeTitles() {
-        return recipeService.getAllRecipeTitles();
-    }
 
+    @GetMapping("/title")
+    public List<RecipeTitleDto> getAllTitles(){
+        return recipeService.getAllTitles();
+    }
 }

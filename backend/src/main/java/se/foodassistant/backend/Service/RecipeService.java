@@ -27,7 +27,10 @@ public class RecipeService {
     return recipeRepository.save(entity);
     }
 
-    public List<RecipeTitleDto> getAllRecipeTitles() {
-        return recipeRepository.findAllRecipeTitles();
+
+
+    public List<RecipeTitleDto> getAllTitles() {
+        return recipeRepository.getAllTitles();
     }
+
 }
