@@ -18,10 +18,7 @@ private String instructions;
 private enum difficulty {
     easy, medium, hard
 };
-/*@Column(name = "created_at")
-    private LocalDate createdDate;
-@Column(name = "updated_at")
-    private LocalDate updatedDate; */
+
 
     public int getId() {
         return id;
@@ -54,21 +51,5 @@ private enum difficulty {
     public void setCookingTime(Integer cookingTime) {
         this.cookingTime = cookingTime;
     }
-    /*
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-        */
 }
