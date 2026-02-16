@@ -1,7 +1,9 @@
 package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import se.foodassistant.backend.Dto.RecipeDto;
+import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
 import se.foodassistant.backend.Repository.RecipeRepository;
 
@@ -21,7 +23,11 @@ public class RecipeService {
         RecipeEntity entity = new RecipeEntity();
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
-        entity.setCookingTime(dto.getCockingTime());
+        entity.setCookingTime(dto.getCookingTime());
     return recipeRepository.save(entity);
+    }
+
+    public List<RecipeTitleDto> getAllRecipeTitles() {
+        return recipeRepository.findAllRecipeTitles();
     }
 }
