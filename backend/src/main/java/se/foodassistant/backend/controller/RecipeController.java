@@ -21,6 +21,8 @@ public class RecipeController {
     return recipeService.createNewRecipe(dto);
     }
 
+    @DeleteMapping("/remove")
+
 
 
     @GetMapping("/title")
