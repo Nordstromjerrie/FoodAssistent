@@ -1,7 +1,6 @@
 package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
@@ -16,7 +15,6 @@ public class RecipeService {
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
-
 
 
     public RecipeEntity createNewRecipe(RecipeDto dto){
