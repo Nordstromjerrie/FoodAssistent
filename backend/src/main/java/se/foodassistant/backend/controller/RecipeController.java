@@ -1,5 +1,6 @@
 package se.foodassistant.backend.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
@@ -19,6 +20,12 @@ public class RecipeController {
     @PostMapping("/new")
     public RecipeEntity createNewPlayer(@RequestBody RecipeDto dto){
     return recipeService.createNewRecipe(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRecipe(@PathVariable long id) {
+        recipeService.deleteRecipe(id);
+        return ResponseEntity.noContent().build();
     }
 
 

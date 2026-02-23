@@ -27,6 +27,13 @@ public class RecipeService {
     return recipeRepository.save(entity);
     }
 
+    public void deleteRecipe(long id){
+        RecipeEntity recipeEntity = recipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("recipe not found"));
+
+        recipeRepository.delete(recipeEntity);
+
+    }
 
 
     public List<RecipeTitleDto> getAllTitles() {
