@@ -2,6 +2,7 @@ package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import se.foodassistant.backend.Dto.DomainDto;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
@@ -18,16 +19,15 @@ public class RecipeService {
     }
 
 
-
-    public RecipeEntity createNewRecipe(RecipeDto dto){
+    public RecipeEntity createNewRecipe(RecipeDto dto) {
         RecipeEntity entity = new RecipeEntity();
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
-    return recipeRepository.save(entity);
+        return recipeRepository.save(entity);
     }
 
-    public void deleteRecipe(long id){
+    public void deleteRecipe(long id) {
         RecipeEntity recipeEntity = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("recipe not found"));
 
@@ -40,4 +40,21 @@ public class RecipeService {
         return recipeRepository.getAllTitles();
     }
 
+    public RecipeDto updateRecipe(Long id, RecipeDto dto) {
+        RecipeEntity recipe = recipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recipe not found"));
+
+        recipe.setTitle(dto.getTitle());
+        recipe.setInstructions(dto.getInstructions());
+        recipe.setCookingTime(dto.getCookingTime());
+
+        RecipeEntity saved = recipeRepository.save(recipe);
+
+        RecipeDto updatedDto = new RecipeDto();
+        updatedDto.setTitle(saved.getTitle());
+        updatedDto.setInstructions(saved.getInstructions());
+        updatedDto.setCookingTime(saved.getCookingTime());
+
+        return updatedDto;
+    }
 }

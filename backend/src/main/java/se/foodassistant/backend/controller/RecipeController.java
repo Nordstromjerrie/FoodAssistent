@@ -34,4 +34,12 @@ public class RecipeController {
     public List<RecipeTitleDto> getAllTitles(){
         return recipeService.getAllTitles();
     }
+
+    @PutMapping("/{id}")
+    public void updateRecipe(
+            @PathVariable Long id,
+            @RequestBody RecipeDto dto) {
+
+         recipeService.updateRecipe(id, dto);
+    }
 }
