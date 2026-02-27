@@ -1,0 +1,2 @@
+ALTER TABLE recipes
+ADD COLUMN calories INT NOT NULL
