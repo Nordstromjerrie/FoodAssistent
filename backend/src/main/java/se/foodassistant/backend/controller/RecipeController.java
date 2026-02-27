@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
-import se.foodassistant.backend.Entity.RecipeEntity;
+import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Service.RecipeService;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
     @PostMapping("/new")
-    public RecipeEntity createNewPlayer(@RequestBody RecipeDto dto){
+    public Recipe createNewPlayer(@RequestBody RecipeDto dto){
     return recipeService.createNewRecipe(dto);
     }
 
@@ -36,10 +36,10 @@ public class RecipeController {
     }
 
     @PutMapping("/{id}")
-    public void updateRecipe(
+    public RecipeDto updateRecipe(
             @PathVariable Long id,
             @RequestBody RecipeDto dto) {
 
-         recipeService.updateRecipe(id, dto);
+        return recipeService.updateRecipe(id, dto);
     }
 }
