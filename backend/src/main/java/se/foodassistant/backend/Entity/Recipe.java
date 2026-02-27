@@ -1,12 +1,12 @@
 package se.foodassistant.backend.Entity;
 
 import jakarta.persistence.*;
+import se.foodassistant.backend.Enum.Difficulty;
+import se.foodassistant.backend.Enum.SpicyLevel;
 
-import java.time.LocalDate;
-import java.util.Date;
 @Entity
 @Table(name = "recipes")
-public class RecipeEntity {
+public class Recipe {
     @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 
@@ -15,10 +15,26 @@ private String title;
 private String instructions;
 @Column(name = "cooking_time")
     private Integer cookingTime;
-private enum difficulty {
-    easy, medium, hard
-};
+    @Enumerated(EnumType.STRING)
+    Difficulty difficulty;
+    @Enumerated(EnumType.STRING)
+    SpicyLevel spicyLevel;
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public SpicyLevel getSpicyLevel() {
+        return spicyLevel;
+    }
+
+    public void setSpicyLevel(SpicyLevel spicyLevel) {
+        this.spicyLevel = spicyLevel;
+    }
 
     public int getId() {
         return id;
