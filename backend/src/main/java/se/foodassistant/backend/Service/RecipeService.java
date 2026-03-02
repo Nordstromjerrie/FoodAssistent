@@ -23,7 +23,7 @@ public class RecipeService {
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
-    return recipeRepository.save(entity);
+        return recipeRepository.save(entity);
     }
     public void deleteRecipe(long id){
         RecipeEntity recipeEntity = recipeRepository.findById(id)
@@ -32,9 +32,12 @@ public class RecipeService {
         recipeRepository.delete(recipeEntity);
 
     }
+
+
     public List<RecipeTitleDto> getAllTitles() {
         return recipeRepository.getAllTitles();
     }
+
     public RecipeDto updateRecipe(Long id, RecipeDto dto) {
         RecipeEntity recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Recipe not found"));
@@ -42,18 +45,10 @@ public class RecipeService {
         recipe.setTitle(dto.getTitle());
         recipe.setInstructions(dto.getInstructions());
         recipe.setCookingTime(dto.getCookingTime());
-
-
-        RecipeEntity saved = recipeRepository.save(recipe);
-
-        RecipeDto updatedDto = new RecipeDto();
-        updatedDto.setTitle(saved.getTitle());
-        updatedDto.setInstructions(saved.getInstructions());
         recipe.setDifficulty(dto.getDifficulty());
         recipe.setSpicyLevel(dto.getSpicyLevel());
-        updatedDto.setCookingTime(saved.getCookingTime());
 
-        return updatedDto;
+        return dto;
     }
 
 
