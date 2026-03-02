@@ -3,7 +3,6 @@ package se.foodassistant.backend.Dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import se.foodassistant.backend.Enum.Difficulty;
 import se.foodassistant.backend.Enum.SpicyLevel;
-
 public class RecipeDto {
     @JsonProperty("title")
     String title;

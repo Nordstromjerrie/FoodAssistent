@@ -18,7 +18,6 @@ public class RecipeService {
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
-
     public RecipeEntity createNewRecipe(RecipeDto dto){
         RecipeEntity entity = new RecipeEntity();
         entity.setInstructions(dto.getInstructions());

@@ -34,3 +34,5 @@ build/
 # Local environment (DO NOT COMMIT)
 .env
 .yml
+*.yml
+*.yaml
