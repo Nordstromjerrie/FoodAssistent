@@ -45,11 +45,14 @@ public class RecipeService {
         recipe.setInstructions(dto.getInstructions());
         recipe.setCookingTime(dto.getCookingTime());
 
+
         RecipeEntity saved = recipeRepository.save(recipe);
 
         RecipeDto updatedDto = new RecipeDto();
         updatedDto.setTitle(saved.getTitle());
         updatedDto.setInstructions(saved.getInstructions());
+        recipe.setDifficulty(dto.getDifficulty());
+        recipe.setSpicyLevel(dto.getSpicyLevel());
         updatedDto.setCookingTime(saved.getCookingTime());
 
         return updatedDto;
