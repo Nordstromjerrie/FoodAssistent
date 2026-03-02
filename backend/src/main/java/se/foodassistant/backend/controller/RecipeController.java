@@ -42,4 +42,8 @@ public class RecipeController {
 
         return recipeService.updateRecipe(id, dto);
     }
+    @GetMapping("/random")
+    public RecipeEntity getRandomRecipe() {
+        return recipeService.getRandomRecipe();
+    }
 }

@@ -68,4 +68,19 @@ private String instructions;
         this.cookingTime = cookingTime;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public SpicyLevel getSpicyLevel() {
+        return spicyLevel;
+    }
+
+    public void setSpicyLevel(SpicyLevel spicyLevel) {
+        this.spicyLevel = spicyLevel;
+    }
 }
