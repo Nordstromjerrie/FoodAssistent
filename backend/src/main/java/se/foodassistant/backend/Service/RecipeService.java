@@ -23,19 +23,23 @@ public class RecipeService {
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
-    entity.setCalories(dto.getCookingTime());
+        entity.setCalories(dto.getCookingTime());
         return recipeRepository.save(entity);
     }
-    public void deleteRecipe(long id){
-        Recipe recipe = recipeRepository.findById(id)
+
+    public void deleteRecipe(long id) {
+        Recipe recipeEntity = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("recipe not found"));
 
-        recipeRepository.delete(recipe);
+        recipeRepository.delete(recipeEntity);
 
     }
+
+
     public List<RecipeTitleDto> getAllTitles() {
         return recipeRepository.getAllTitles();
     }
+
     public RecipeDto updateRecipe(Long id, RecipeDto dto) {
         Recipe recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Recipe not found"));

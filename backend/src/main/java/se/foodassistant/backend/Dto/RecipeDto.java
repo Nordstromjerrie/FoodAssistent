@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import se.foodassistant.backend.Enum.Difficulty;
 import se.foodassistant.backend.Enum.SpicyLevel;
+
 public class RecipeDto {
 
     @NotBlank(message = "Title cannot be empty")
@@ -11,7 +12,7 @@ public class RecipeDto {
     private String title;
 
     @NotBlank(message = "Instructions cannot be empty")
-    @JsonProperty("Instructions")
+    @JsonProperty("instructions")
     private String Instructions;
 
     @NotNull(message = "Cooking time is required")
@@ -58,7 +59,7 @@ public class RecipeDto {
         return Instructions;
     }
 
-    public void setInstructions(String instructions) {
+    public void setInstructions(String instructions)     {
         Instructions = instructions;
     }
 
@@ -69,7 +70,6 @@ public class RecipeDto {
     public void setCookingTime(Integer cockingTime) {
         this.cookingTime = cockingTime;
     }
-
     public Integer getCalories() {
         return calories;
     }
