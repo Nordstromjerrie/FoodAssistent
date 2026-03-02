@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import se.foodassistant.backend.Enum.Difficulty;
 import se.foodassistant.backend.Enum.SpicyLevel;
 
-import java.time.LocalDate;
-import java.util.Date;
 @Entity
 @Table(name = "recipes")
-public class RecipeEntity {
+public class Recipe {
     @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 

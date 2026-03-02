@@ -1,10 +1,8 @@
 package se.foodassistant.backend.Entity;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
 import jakarta.persistence.*;
-import org.apache.catalina.User;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 public class UserEntity {
@@ -35,7 +33,7 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
-    private List<RecipeEntity> likedRecipes;
+    private List<Recipe> likedRecipes;
 
 
     public String getFavoriteFood() {
@@ -78,11 +76,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    public List<RecipeEntity> getLikedRecipes() {
+    public List<Recipe> getLikedRecipes() {
         return likedRecipes;
     }
 
-    public void setLikedRecipes(List<RecipeEntity> likedRecipes) {
+    public void setLikedRecipes(List<Recipe> likedRecipes) {
         this.likedRecipes = likedRecipes;
     }}
 
