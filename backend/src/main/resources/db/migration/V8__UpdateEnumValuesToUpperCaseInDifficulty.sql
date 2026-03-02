@@ -1,0 +1,2 @@
+ALTER TABLE recipes
+MODIFY COLUMN difficulty ENUM('EASY','MEDIUM','HARD');

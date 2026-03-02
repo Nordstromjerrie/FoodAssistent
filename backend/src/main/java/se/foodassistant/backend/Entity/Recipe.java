@@ -20,7 +20,6 @@ private String instructions;
     @Enumerated(EnumType.STRING)
     SpicyLevel spicyLevel;
 
-
     public int getId() {
         return id;
     }

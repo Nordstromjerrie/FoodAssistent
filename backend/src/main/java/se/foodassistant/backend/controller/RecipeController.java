@@ -36,11 +36,11 @@ public class RecipeController {
     }
 
     @PutMapping("/{id}")
-    public void updateRecipe(
+    public RecipeDto updateRecipe(
             @PathVariable Long id,
             @RequestBody RecipeDto dto) {
 
-         recipeService.updateRecipe(id, dto);
+        return recipeService.updateRecipe(id, dto);
     }
     @GetMapping("/random")
     public Recipe getRandomRecipe() {

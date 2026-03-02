@@ -1,0 +1,2 @@
+ALTER TABLE recipes
+MODIFY COLUMN spicy_level ENUM('EASY','MILD','HOT');
