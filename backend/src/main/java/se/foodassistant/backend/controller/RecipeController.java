@@ -43,4 +43,8 @@ public class RecipeController {
 
          recipeService.updateRecipe(id, dto);
     }
+    @GetMapping("/random")
+    public Recipe getRandomRecipe() {
+        return recipeService.getRandomRecipe();
+    }
 }
