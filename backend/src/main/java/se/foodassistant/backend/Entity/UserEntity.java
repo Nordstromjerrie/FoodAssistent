@@ -76,8 +76,6 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id")
     )
-    private List<RecipeEntity> likedRecipes;
-
     public List<RecipeEntity> getLikedRecipes() {
         return likedRecipes;
     }
