@@ -47,7 +47,7 @@ public class UserService {
 
         userRepository.save(user);
     }
-
+@Transactional
     public void likedRecipes(Long userId, Long recipeId) {
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow();
@@ -59,13 +59,10 @@ public class UserService {
     }
     @Transactional
     public UserEntity getUserProfile(long id) {
-        UserEntity user = userRepository.findById(id).orElseThrow();
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
         user.getLikedRecipes().size();
         return user;
-    }
-
-    public UserEntity getUserProfile(Long Id) {
-        return userRepository.findById(Id).orElseThrow();
     }
 
 }

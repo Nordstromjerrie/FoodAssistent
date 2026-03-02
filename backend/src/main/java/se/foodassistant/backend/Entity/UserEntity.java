@@ -14,7 +14,6 @@ public class UserEntity {
     private String username;
     private String password;
     private String email;
-    private List<String> likedRecipeTitles;
 
     public String getEmail() {
         return email;
@@ -29,6 +28,15 @@ public class UserEntity {
 
     @Column(name = "favorite_food")
     private String favoriteFood;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_liked_food",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id")
+    )
+    private List<RecipeEntity> likedRecipes;
+
 
     public String getFavoriteFood() {
         return favoriteFood;
@@ -70,21 +78,14 @@ public class UserEntity {
         this.username = username;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_liked_food",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id")
-    )
     public List<RecipeEntity> getLikedRecipes() {
         return likedRecipes;
     }
 
     public void setLikedRecipes(List<RecipeEntity> likedRecipes) {
         this.likedRecipes = likedRecipes;
-    }
+    }}
 
 
-    public List<String> getLikedRecipeTitles() { return likedRecipeTitles; }
-}
+
 
