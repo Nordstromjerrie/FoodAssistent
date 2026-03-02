@@ -7,7 +7,6 @@ import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
 import se.foodassistant.backend.Repository.RecipeRepository;
-
 import java.util.List;
 import java.util.Random;
 
