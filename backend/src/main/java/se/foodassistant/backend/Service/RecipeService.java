@@ -1,6 +1,8 @@
 package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import se.foodassistant.backend.Dto.DomainDto;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.RecipeEntity;
@@ -17,7 +19,6 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-
     public RecipeEntity createNewRecipe(RecipeDto dto){
         RecipeEntity entity = new RecipeEntity();
         entity.setInstructions(dto.getInstructions());
@@ -25,7 +26,6 @@ public class RecipeService {
         entity.setCookingTime(dto.getCookingTime());
     return recipeRepository.save(entity);
     }
-
     public void deleteRecipe(long id){
         RecipeEntity recipeEntity = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("recipe not found"));
@@ -33,7 +33,6 @@ public class RecipeService {
         recipeRepository.delete(recipeEntity);
 
     }
-
     public List<RecipeTitleDto> getAllTitles() {
         return recipeRepository.getAllTitles();
     }
@@ -57,7 +56,6 @@ public class RecipeService {
 
         return updatedDto;
     }
-
     public RecipeEntity getRandomRecipe() {
         List<RecipeEntity> recipe = recipeRepository.findAll();
 
