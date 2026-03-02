@@ -55,6 +55,9 @@ public class RecipeService {
 
         return updatedDto;
     }
+
+
+
     public RecipeEntity getRandomRecipe() {
         List<RecipeEntity> recipe = recipeRepository.findAll();
 
