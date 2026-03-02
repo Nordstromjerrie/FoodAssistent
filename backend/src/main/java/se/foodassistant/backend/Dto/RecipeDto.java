@@ -1,20 +1,35 @@
 package se.foodassistant.backend.Dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.*;
 import se.foodassistant.backend.Enum.Difficulty;
 import se.foodassistant.backend.Enum.SpicyLevel;
 
 public class RecipeDto {
+
+    @NotBlank(message = "Title cannot be empty")
     @JsonProperty("title")
-    String title;
+    private String title;
+
+    @NotBlank(message = "Instructions cannot be empty")
     @JsonProperty("instructions")
-    String Instructions;
+    private String Instructions;
+
+    @NotNull(message = "Cooking time is required")
+    @Min(value = 1, message = "Cooking time must be at least 1 minute")
     @JsonProperty("cookingTime")
-    Integer cookingTime;
+    private Integer cookingTime;
+
+    @NotNull(message = "Calories are required")
+    @Min(value = 0, message = "Calories cannot be negative")
+    @JsonProperty("calories")
+    private Integer calories;
+
     @JsonProperty("difficulty")
-    Difficulty difficulty;
+    private Difficulty difficulty;
+
     @JsonProperty("spicyLevel")
-    SpicyLevel spicyLevel;
+    private SpicyLevel spicyLevel;
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -54,5 +69,12 @@ public class RecipeDto {
 
     public void setCookingTime(Integer cockingTime) {
         this.cookingTime = cockingTime;
+    }
+    public Integer getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Integer calories) {
+        this.calories = calories;
     }
 }

@@ -22,6 +22,7 @@ public class RecipeService {
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
+        entity.setCalories(dto.getCookingTime());
         return recipeRepository.save(entity);
     }
 
@@ -47,6 +48,7 @@ public class RecipeService {
         recipe.setCookingTime(dto.getCookingTime());
         recipe.setDifficulty(dto.getDifficulty());
         recipe.setSpicyLevel(dto.getSpicyLevel());
+        recipe.setCalories(dto.getCalories());
         Recipe saved = recipeRepository.save(recipe);
 
         return dto;

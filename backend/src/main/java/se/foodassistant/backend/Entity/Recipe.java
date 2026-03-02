@@ -13,6 +13,7 @@ public class Recipe {
 private int id;
 private String title;
 private String instructions;
+private Integer calories;
 @Column(name = "cooking_time")
     private Integer cookingTime;
     @Enumerated(EnumType.STRING)
@@ -66,6 +67,14 @@ private String instructions;
 
     public void setCookingTime(Integer cookingTime) {
         this.cookingTime = cookingTime;
+    }
+
+    public Integer getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Integer calories) {
+        this.calories = calories;
     }
 
 }
