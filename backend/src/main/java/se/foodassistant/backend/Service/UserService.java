@@ -2,7 +2,7 @@ package se.foodassistant.backend.Service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import se.foodassistant.backend.Entity.RecipeEntity;
+import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.UserEntity;
 import se.foodassistant.backend.Repository.RecipeRepository;
 import se.foodassistant.backend.Repository.UserRepository;
@@ -51,7 +51,7 @@ public class UserService {
     public void likedRecipes(Long userId, Long recipeId) {
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow();
-        RecipeEntity recipe = recipeRepository.findById(recipeId)
+        Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow();
 
         user.getLikedRecipes().add(recipe);
