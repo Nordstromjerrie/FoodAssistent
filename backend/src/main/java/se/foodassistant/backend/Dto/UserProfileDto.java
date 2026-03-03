@@ -1,7 +1,7 @@
 package se.foodassistant.backend.Dto;
 
-import se.foodassistant.backend.Entity.RecipeEntity;
 import se.foodassistant.backend.Entity.UserEntity;
+import se.foodassistant.backend.Entity.Recipe;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class UserProfileDto {
         this.favoriteFood = user.getFavoriteFood();
         this.likedRecipeTitles = user.getLikedRecipes()
                 .stream()
-                .map(RecipeEntity::getTitle)
+                .map(Recipe::getTitle)
                 .toList();
     }
 
