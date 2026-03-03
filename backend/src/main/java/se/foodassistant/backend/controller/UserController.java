@@ -1,13 +1,11 @@
 package se.foodassistant.backend.controller;
 
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.foodassistant.backend.Dto.RegistrationDto;
 import se.foodassistant.backend.Dto.UserProfileDto;
-import se.foodassistant.backend.Entity.UserEntity;
+import se.foodassistant.backend.Entity.User;
 import se.foodassistant.backend.Service.UserService;
 
 @RestController
@@ -25,7 +23,7 @@ public class UserController {
         userService.register(dto.getUsername(), dto.getPassword(), dto.getEmail());
     }
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserEntity user){
+    public ResponseEntity<?> login(@RequestBody User user){
 
         boolean success = userService.login(
                 user.getUsername(),
@@ -46,7 +44,7 @@ public class UserController {
     }
     @PostMapping("/profile/{id}")
     public UserProfileDto getProfile(@PathVariable Long id) {
-       UserEntity user = userService.getUserProfile(id);
+       User user = userService.getUserProfile(id);
        return new UserProfileDto(user);
     }
 
