@@ -3,6 +3,7 @@ package se.foodassistant.backend.Dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import se.foodassistant.backend.Enum.Difficulty;
+import se.foodassistant.backend.Enum.MealType;
 import se.foodassistant.backend.Enum.SpicyLevel;
 
 public class RecipeDto {
@@ -30,6 +31,25 @@ public class RecipeDto {
 
     @JsonProperty("spicyLevel")
     private SpicyLevel spicyLevel;
+    @JsonProperty("mealType")
+    private MealType mealType;
+    private long id;
+
+    public MealType getMealType() {
+        return mealType;
+    }
+
+    public void setMealType(MealType mealType) {
+        this.mealType = mealType;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
 
     public Difficulty getDifficulty() {
         return difficulty;

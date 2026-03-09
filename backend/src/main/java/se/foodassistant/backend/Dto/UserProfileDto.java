@@ -1,8 +1,6 @@
 package se.foodassistant.backend.Dto;
 
 import se.foodassistant.backend.Entity.Recipe;
-import se.foodassistant.backend.Entity.UserEntity;
-import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.User;
 
 import java.util.List;

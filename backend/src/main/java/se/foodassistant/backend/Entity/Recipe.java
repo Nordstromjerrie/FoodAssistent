@@ -2,6 +2,7 @@ package se.foodassistant.backend.Entity;
 
 import jakarta.persistence.*;
 import se.foodassistant.backend.Enum.Difficulty;
+import se.foodassistant.backend.Enum.MealType;
 import se.foodassistant.backend.Enum.SpicyLevel;
 
 @Entity
@@ -10,16 +11,26 @@ public class Recipe {
     @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 
-private int id;
-private String title;
-private String instructions;
-private Integer calories;
-@Column(name = "cooking_time")
+    private int id;
+    private String title;
+    private String instructions;
+    private Integer calories;
+    @Column(name = "cooking_time")
     private Integer cookingTime;
     @Enumerated(EnumType.STRING)
-    Difficulty difficulty;
+    private Difficulty difficulty;
     @Enumerated(EnumType.STRING)
-    SpicyLevel spicyLevel;
+    private SpicyLevel spicyLevel;
+    @Enumerated(EnumType.STRING)
+    private MealType mealType;
+
+    public MealType getMealType() {
+        return mealType;
+    }
+
+    public void setMealType(MealType mealType) {
+        this.mealType = mealType;
+    }
 
     public Difficulty getDifficulty() {
         return difficulty;

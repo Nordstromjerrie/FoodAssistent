@@ -3,7 +3,7 @@ package se.foodassistant.backend.Service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import se.foodassistant.backend.Entity.Recipe;
-import se.foodassistant.backend.Entity.UserEntity;
+
 import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.User;
 import se.foodassistant.backend.Repository.RecipeRepository;
