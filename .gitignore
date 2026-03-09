@@ -17,3 +17,4 @@ application.yml
 Frontend/node_modules/
 Frontend/.next/
 Frontend/out/
+Frontend/.env.local
