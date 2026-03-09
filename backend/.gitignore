@@ -36,3 +36,7 @@ build/
 .yml
 *.yml
 *.yaml
+### Frontend ###
+Frontend/node_modules/
+Frontend/.next/
+Frontend/out/
