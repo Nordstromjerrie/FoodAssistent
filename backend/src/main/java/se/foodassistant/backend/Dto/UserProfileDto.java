@@ -2,6 +2,8 @@ package se.foodassistant.backend.Dto;
 
 import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.UserEntity;
+import se.foodassistant.backend.Entity.Recipe;
+import se.foodassistant.backend.Entity.User;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class UserProfileDto {
     private String favoriteFood;
     private List<String> likedRecipeTitles; // or List<RecipeDto>
 
-    public UserProfileDto(UserEntity user) {
+    public UserProfileDto(User user) {
         this.id = user.getId();
         this.username = user.getUsername();
         this.email = user.getEmail();

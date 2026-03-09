@@ -1,5 +1,5 @@
 package se.foodassistant.backend.controller;
-
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.foodassistant.backend.Dto.RecipeDto;
@@ -18,7 +18,7 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
     @PostMapping("/new")
-    public Recipe createNewPlayer(@RequestBody RecipeDto dto){
+    public Recipe createNewPlayer(@Valid @RequestBody RecipeDto dto){
     return recipeService.createNewRecipe(dto);
     }
 
@@ -36,11 +36,12 @@ public class RecipeController {
     }
 
     @PutMapping("/{id}")
-    public RecipeDto updateRecipe(
+    public void updateRecipe(
+            @Valid
             @PathVariable Long id,
             @RequestBody RecipeDto dto) {
 
-        return recipeService.updateRecipe(id, dto);
+         recipeService.updateRecipe(id, dto);
     }
     @GetMapping("/random")
     public Recipe getRandomRecipe() {

@@ -1,13 +1,12 @@
 package se.foodassistant.backend.Entity;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
 import jakarta.persistence.*;
-import org.apache.catalina.User;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
-public class UserEntity {
+@Table(name = "user_entity")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
