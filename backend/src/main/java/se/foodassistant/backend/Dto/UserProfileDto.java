@@ -3,6 +3,7 @@ package se.foodassistant.backend.Dto;
 import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileDto {
