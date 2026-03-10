@@ -11,6 +11,7 @@ import se.foodassistant.backend.Entity.User;
 import se.foodassistant.backend.Repository.RecipeRepository;
 import se.foodassistant.backend.Repository.UserRepository;
 
+
 import java.util.Optional;
 
 @Service
@@ -24,7 +25,7 @@ public class UserService {
         this.recipeRepository = recipeRepository;
     }
     public void register(String username, String password, String email) {
-        UserEntity user = new UserEntity();
+        User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
@@ -33,7 +34,7 @@ public class UserService {
 
     public boolean login(String username, String password) {
 
-        Optional<UserEntity> user = userRepository.findByUsername(username);
+        Optional<User> user = userRepository.findByUsername(username);
 
         if (user.isPresent()) {
            return user.get().getPassword().equals(password);
@@ -44,7 +45,7 @@ public class UserService {
 
     public void updateProfile(Long id, String profileImage, String favoriteFood) {
 
-        UserEntity user = userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow();
 
         user.setProfileImage(profileImage);
         user.setFavoriteFood(favoriteFood);
@@ -53,17 +54,17 @@ public class UserService {
     }
 @Transactional
     public void likedRecipes(Long userId, Long recipeId) {
-        UserEntity user = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow();
-        RecipeEntity recipe = recipeRepository.findById(recipeId)
+        Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow();
 
         user.getLikedRecipes().add(recipe);
         userRepository.save(user);
     }
     @Transactional
-    public UserEntity getUserProfile(long id) {
-        UserEntity user = userRepository.findById(id)
+    public User getUserProfile(long id) {
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.getLikedRecipes().size();
         return user;
