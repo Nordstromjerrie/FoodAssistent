@@ -1,5 +1,3 @@
-import Link from "next/dist/client/link";
-
 type Recipe = {
   id: number;
   title: string;
@@ -13,7 +11,7 @@ type Recipe = {
 };
 
 async function getRecipes(): Promise<Recipe[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/recipe/get/all/recipes`, {
+  const res = await fetch("http://localhost:8080/recipe/get/all/recipes", {
     cache: "no-store",
   });
 

@@ -1,13 +1,11 @@
 package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import se.foodassistant.backend.Dto.DomainDto;
 import se.foodassistant.backend.Dto.RecipeDto;
-import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Repository.RecipeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,18 +21,42 @@ public class RecipeService {
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
-    return recipeRepository.save(entity);
+        entity.setCalories(dto.getCookingTime());
+        entity.setMealType(dto.getMealType());
+
+
+        return recipeRepository.save(entity);
     }
-    public void deleteRecipe(long id){
-        Recipe recipe = recipeRepository.findById(id)
+
+    public void deleteRecipe(long id) {
+        Recipe recipeEntity = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("recipe not found"));
 
-        recipeRepository.delete(recipe);
+        recipeRepository.delete(recipeEntity);
 
     }
-    public List<RecipeTitleDto> getAllTitles() {
-        return recipeRepository.getAllTitles();
+
+
+    public List<RecipeDto> getAllRecipes() {
+        List<Recipe> recipes = recipeRepository.findAll();
+        List<RecipeDto> recipeDto = new ArrayList<>();
+        for (Recipe recipe: recipes){
+            RecipeDto recipesDto = new RecipeDto();
+            recipesDto.setTitle(recipe.getTitle());
+            recipesDto.setInstructions(recipe.getTitle());
+            recipesDto.setCalories(recipe.getCalories());
+            recipesDto.setCookingTime(recipe.getCookingTime());
+            recipesDto.setDifficulty(recipe.getDifficulty());
+            recipesDto.setId(recipe.getId());
+            recipesDto.setSpicyLevel(recipe.getSpicyLevel());
+            recipesDto.setMealType(recipe.getMealType());
+            recipeDto.add(recipesDto);
+
+
+        }
+        return recipeDto;
     }
+
     public RecipeDto updateRecipe(Long id, RecipeDto dto) {
         Recipe recipe = recipeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Recipe not found"));
@@ -42,18 +64,12 @@ public class RecipeService {
         recipe.setTitle(dto.getTitle());
         recipe.setInstructions(dto.getInstructions());
         recipe.setCookingTime(dto.getCookingTime());
-
-
+        recipe.setDifficulty(dto.getDifficulty());
+        recipe.setSpicyLevel(dto.getSpicyLevel());
+        recipe.setCalories(dto.getCalories());
         Recipe saved = recipeRepository.save(recipe);
 
-        RecipeDto updatedDto = new RecipeDto();
-        updatedDto.setTitle(saved.getTitle());
-        updatedDto.setInstructions(saved.getInstructions());
-        recipe.setDifficulty(saved.getDifficulty());
-        recipe.setSpicyLevel(saved.getSpicyLevel());
-        updatedDto.setCookingTime(saved.getCookingTime());
-
-        return updatedDto;
+        return dto;
     }
 
 

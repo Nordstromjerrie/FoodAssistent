@@ -1,0 +1,1 @@
+alter table recipes add column meal_type enum('BREAKFAST', 'LUNCH', 'DINNER', 'OTHER') DEFAULT 'OTHER';

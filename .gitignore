@@ -13,3 +13,8 @@ Thumbs.db
 .env.example
 docker-compose.yml
 application.yml
+### Frontend ###
+Frontend/node_modules/
+Frontend/.next/
+Frontend/out/
+Frontend/.env.local

@@ -39,7 +39,7 @@ export default function RecipesNewPage() {
             mealType: formData.mealType,
         };
         console.log("Skickar payload:", JSON.stringify(payload));
-        const res = await fetch("http://localhost:8080/recipe/create/recipe", {
+        const res = await fetch("http://localhost:8080/recipe/new", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(payload),
@@ -92,7 +92,6 @@ export default function RecipesNewPage() {
                 padding: "10px",
                 margin: "20px 0px"
                 }}>
-                Enter your recipe details in the form below and click "Submit" to add it to the collection.
                 </div>
             
             <form onSubmit={handleSubmit}>
