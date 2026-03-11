@@ -23,6 +23,7 @@ public class RecipeService {
         entity.setCookingTime(dto.getCookingTime());
         entity.setCalories(dto.getCookingTime());
         entity.setMealType(dto.getMealType());
+        entity.setSpicyLevel(dto.getSpicyLevel());
 
 
         return recipeRepository.save(entity);
