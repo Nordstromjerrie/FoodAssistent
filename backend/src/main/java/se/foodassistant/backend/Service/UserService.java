@@ -3,9 +3,14 @@ package se.foodassistant.backend.Service;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import se.foodassistant.backend.Entity.Recipe;
+
+import se.foodassistant.backend.Entity.Recipe;
+
+import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Entity.User;
 import se.foodassistant.backend.Repository.RecipeRepository;
 import se.foodassistant.backend.Repository.UserRepository;
+
 
 import java.util.Optional;
 
@@ -40,7 +45,7 @@ public class UserService {
 
     public void updateProfile(Long id, String profileImage, String favoriteFood) {
 
-        User user = (User) userRepository.findById(id).orElseThrow();
+        User user = userRepository.findById(id).orElseThrow();
 
         user.setProfileImage(profileImage);
         user.setFavoriteFood(favoriteFood);
@@ -49,7 +54,7 @@ public class UserService {
     }
 @Transactional
     public void likedRecipes(Long userId, Long recipeId) {
-        User user = (User) userRepository.findById(userId)
+        User user = userRepository.findById(userId)
                 .orElseThrow();
         Recipe recipe = recipeRepository.findById(recipeId)
                 .orElseThrow();
@@ -59,7 +64,7 @@ public class UserService {
     }
     @Transactional
     public User getUserProfile(long id) {
-        User user = (User) userRepository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.getLikedRecipes().size();
         return user;

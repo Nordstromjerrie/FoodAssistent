@@ -8,7 +8,7 @@ import se.foodassistant.backend.Entity.Recipe;
 import se.foodassistant.backend.Service.RecipeService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -22,7 +22,7 @@ public class RecipeController {
     return recipeService.createNewRecipe(dto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteRecipe(@PathVariable long id) {
         recipeService.deleteRecipe(id);
         return ResponseEntity.noContent().build();
@@ -30,9 +30,9 @@ public class RecipeController {
 
 
 
-    @GetMapping("/title")
-    public List<RecipeTitleDto> getAllTitles(){
-        return recipeService.getAllTitles();
+    @GetMapping("/get/all/recipes")
+    public List<RecipeDto> getAllRecipes(){
+        return recipeService.getAllRecipes();
     }
 
     @PutMapping("/{id}")
