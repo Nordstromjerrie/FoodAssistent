@@ -1,8 +1,6 @@
 package se.foodassistant.backend.Service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import se.foodassistant.backend.Dto.DomainDto;
 import se.foodassistant.backend.Dto.RecipeDto;
 import se.foodassistant.backend.Dto.RecipeTitleDto;
 import se.foodassistant.backend.Entity.Recipe;
