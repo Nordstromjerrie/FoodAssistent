@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import AddRecipe from "@/components/AddRecipe";
+import DeleteRecipe from "@/components/DeleteRecipe";
 import style from "styled-jsx/style";
 
 type Recipe = {
@@ -15,6 +17,19 @@ type Recipe = {
 type SortMode = "title-asc" | "title-desc" | "time-asc" | "time-desc";
 
 export default function RecipesClientPage() {
+  // Lägg till denna funktion i RecipesClientPage
+const deleteRecipe = async (id: number) => {
+  if (!confirm("Är du säker på att du vill ta bort receptet?")) return;
+  const res = await fetch(`http://localhost:8080/recipe/delete/${id}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    alert("Delete misslyckades: " + res.statusText);
+    return;
+  }
+  setRecipes((prev) => prev.filter((r) => r.id !== id));
+};
+  const [showAdd, setShowAdd] = useState(false);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [query, setQuery] = useState("");
   const [sortMode, setSortMode] = useState<SortMode>("title-asc");
@@ -131,13 +146,10 @@ export default function RecipesClientPage() {
         </select>
 
         <button
-          onClick={() => {
-            setQuery("");
-            setSortMode("title-asc");
-          }}
+          onClick={() => setShowAdd(true)}
           style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}
-       >
-          Reset
+        >
+          Create new Recipe
         </button>
           
           
@@ -147,8 +159,6 @@ export default function RecipesClientPage() {
       </div>
      
      <div style ={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
-      <Link href="/recipes-new" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>Create new recipe</Link>
-      <Link href="/recipes-delete" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>Delete recipe</Link>
       <Link href="/recipes" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>View all info about recipes</Link>
       <Link href="/recipes/update" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>Update recipe</Link>
     </div>
@@ -161,13 +171,57 @@ export default function RecipesClientPage() {
 
       <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
         {visible.map((r) => (
-          <div key={r.id} style={{ border: "1px solid #ff9900", borderRadius: 12, padding: 12 }}>
-            <div style={{ fontSize: 18, fontWeight: 600 }}>{r.title}</div>
-            <div>Cooking time: {r.cookingTime ?? "-"} min</div>
-            <div>Spicy Level: {r.spicyLevel ?? "-"}</div>
-          </div>
-        ))}
+  <div key={r.id} style={{ border: "1px solid #ff9900", borderRadius: 12, padding: 12 }}>
+    <div style={{ fontSize: 18, fontWeight: 600 }}>{r.title}</div>
+    <div>Cooking time: {r.cookingTime ?? "-"} min</div>
+    <div>Spicy Level: {r.spicyLevel ?? "-"}</div>
+    <button
+      onClick={() => deleteRecipe(r.id)}
+      style={{
+        marginTop: 8,
+        backgroundColor: "red",
+        color: "white",
+        border: "none",
+        padding: "4px 8px",
+        cursor: "pointer",
+        borderRadius: 4,
+      }}
+    >
+      Delete
+    </button>
+  </div>
+))}
+        
       </div>
+      {showAdd && (
+    <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 1000
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "#111",
+        padding: 20,
+        borderRadius: 12,
+        width: "600px",
+        maxHeight: "90%",
+        overflowY: "auto"
+      }}
+    >
+      <AddRecipe onClose={() => setShowAdd(false)} />
+    </div>
+  </div>
+)}
     </main>
   </>
 );
