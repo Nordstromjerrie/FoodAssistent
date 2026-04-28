@@ -12,16 +12,14 @@ export default function navbar() {
 
       {/* LINKS */}
       <div className="flex gap-6">
-        <Link href="/" className="text-white hover:text-orange-400">
-          Home
-        </Link>
+        
 
         <Link href="/recipes-client" className="text-white hover:text-orange-400">
-          Recipes
+          Search recipes 
         </Link>
 
         <Link href="/recipes" className="text-white hover:text-orange-400">
-          Details
+          All recipes 
         </Link>
       </div>
     </nav>
