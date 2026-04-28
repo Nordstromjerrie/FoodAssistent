@@ -37,9 +37,9 @@ export default async function RecipesPage() {
             style={{ border: "1px solid #ff9500", borderRadius: 12, padding: 12 }}
           >
                 <img
-  src={r.imageUrl}
+        src={r.imageUrl}
   
-  style={{ height:16, width: "15%", borderRadius: 12, marginLeft: 1200
+        style={{ height:16, width: "15%", borderRadius: 12, marginLeft: 1200
   }}
 />
             <div style={{ display: "flex",fontSize: 18, fontWeight: 600 }}>{r.title}</div>

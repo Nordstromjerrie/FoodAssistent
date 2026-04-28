@@ -4,11 +4,12 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import AddRecipe from "@/components/AddRecipe";
 import DeleteRecipe from "@/components/DeleteRecipe";
+import UpdateRecipe from "@/components/UpdateRecipe";
 import style from "styled-jsx/style";
 
 type Recipe = {
   id: number;
-  title?: string;
+  title: string;
   cookingTime?: number | null;
   spicyLevel?: string;
   //calories?: number | null; // lägg till sen när backend har det
@@ -160,7 +161,6 @@ const deleteRecipe = async (id: number) => {
      
      <div style ={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
       <Link href="/recipes" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>View all info about recipes</Link>
-      <Link href="/recipes/update" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>Update recipe</Link>
     </div>
      
       <p style={{ marginTop: 12 }}>
@@ -171,24 +171,48 @@ const deleteRecipe = async (id: number) => {
 
       <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
         {visible.map((r) => (
-  <div key={r.id} style={{ border: "1px solid #ff9900", borderRadius: 12, padding: 12 }}>
+  <div
+    key={r.id}
+    style={{
+      border: "1px solid #ff9900",
+      borderRadius: 12,
+      padding: 12,
+    }}
+  >
     <div style={{ fontSize: 18, fontWeight: 600 }}>{r.title}</div>
     <div>Cooking time: {r.cookingTime ?? "-"} min</div>
     <div>Spicy Level: {r.spicyLevel ?? "-"}</div>
-    <button
-      onClick={() => deleteRecipe(r.id)}
-      style={{
-        marginTop: 8,
-        backgroundColor: "red",
-        color: "white",
-        border: "none",
-        padding: "4px 8px",
-        cursor: "pointer",
-        borderRadius: 4,
-      }}
-    >
-      Delete
-    </button>
+
+    {/* KNAPPAR */}
+    <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+      
+      {/* DELETE */}
+      <button
+        onClick={() => deleteRecipe(r.id)}
+        style={{
+          backgroundColor: "red",
+          color: "white",
+          border: "none",
+          padding: "4px 8px",
+          cursor: "pointer",
+          borderRadius: 4,
+        }}
+      >
+        Delete
+      </button>
+
+      {/* UPDATE 👇 HÄR */}
+      <UpdateRecipe
+        recipe={r}
+        onUpdated={(updated) => {
+          setRecipes((prev) =>
+            prev.map((item) =>
+              item.id === updated.id ? updated : item
+            )
+          );
+        }}
+      />
+    </div>
   </div>
 ))}
         
