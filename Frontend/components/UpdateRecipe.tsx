@@ -58,9 +58,17 @@ export default function UpdateRecipe({
       return;
     }
 
-    const updated = await res.json();
+    const updated: Recipe = {
+      ...recipe,
+      title,
+      cookingTime,
+      spicyLevel,
+      instructions,
+      calories,
+    };
     onUpdated(updated);
     setShowModal(false);
+  
   };
 
   return (
@@ -121,9 +129,9 @@ export default function UpdateRecipe({
   style={{ width: "100%", marginBottom: 10 }}
 >
   <option value="">Select spicy level</option>
-  <option value="Mild">Mild</option>
-  <option value="Medium">Medium</option>
-  <option value="Hot">Hot</option>
+  <option value="MILD">MILD</option>
+  <option value="MEDIUM">MEDIUM</option>
+  <option value="HOT">HOT</option>
 </select>
 
             <div style={{ display: "flex", gap: 10 }}>

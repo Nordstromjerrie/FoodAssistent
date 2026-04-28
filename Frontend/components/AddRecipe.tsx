@@ -84,7 +84,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
 
       {/* Title */}
       <div className="flex justify-center mb-6">
-        <h1 className="border-2 border-orange-400 rounded-xl text-xl font-light px-10 py-3 text-center">
+        <h1 className=" bg-red-500 border-4 border-orange-400 rounded-xl text-xl font-light px-10 py-3 text-center">
           New Recipe
         </h1>
       </div>
@@ -141,9 +141,9 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             onChange={handleChange}
             className="p-2 border border-orange-400 rounded-lg bg-black"
           >
-            <option value="EASY">Easy</option>
-            <option value="MEDIUM">Medium</option>
-            <option value="HARD">Hard</option>
+            <option value="EASY">EASY</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="HOT">HOT</option>
           </select>
         </div>
 
