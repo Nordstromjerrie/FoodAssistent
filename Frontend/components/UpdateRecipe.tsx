@@ -24,10 +24,13 @@ export default function UpdateRecipe({
   const [cookingTime, setCookingTime] = useState(
     recipe.cookingTime ?? 0
   );
-  const [spicyLevel, setSpicyLevel] = useState(
-    recipe.spicyLevel ?? ""
-  );
-
+  // const [spicyLevel, setSpicyLevel] = useState(
+  //   recipe.spicyLevel ?? ""
+  // );
+const [spicyLevel, setSpicyLevel] = useState(() => {
+  console.log("spicyLevel från backend:", recipe.spicyLevel);
+  return recipe.spicyLevel ?? "";
+});
   const updateRecipe = async () => {
     const res = await fetch(
       `http://localhost:8080/recipe/${recipe.id}`,
