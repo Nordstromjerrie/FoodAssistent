@@ -108,12 +108,12 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         <div className="flex flex-col gap-2">
           <label className="text-lg font-light">Instructions:</label>
           <textarea
-            rows={6}
+            rows={12}
             name="instructions"
             value={formData.instructions}
             onChange={handleChange}
             placeholder="Enter recipe instructions"
-            className="p-2 border border-orange-400 rounded-lg w-full"
+            className="p-2 border border-orange-400 rounded-lg w-full resize-none"
           />
         </div>
 

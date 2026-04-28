@@ -219,28 +219,12 @@ const deleteRecipe = async (id: number) => {
       </div>
       {showAdd && (
     <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundColor: "rgba(0,0,0,0.6)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 1000
-    }}
+    className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+    onClick={() => setShowAdd(false)}
   >
     <div
-      style={{
-        backgroundColor: "#111",
-        padding: 20,
-        borderRadius: 12,
-        width: "600px",
-        maxHeight: "90%",
-        overflowY: "auto"
-      }}
+      className="bg-[#010101] p-5 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
     >
       <AddRecipe onClose={() => setShowAdd(false)} />
     </div>
