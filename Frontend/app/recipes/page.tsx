@@ -27,7 +27,7 @@ export default async function RecipesPage() {
     <main style={{ padding: 24 }}>
       
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 10, }}>Recipes</h1>
-      <Link href="/recipes-client" style={{ padding: "10px 14px", borderRadius: 10, marginTop: 12, border: "1px solid #ff9900" }}> Menu </Link>
+      
       
       <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
         {recipes.map((r) => (
