@@ -52,7 +52,7 @@ export default function DeleteRecipe() {
     key={r.id}
     style={{
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "flex-end",
       alignItems: "center",
       marginBottom: 8,
       width: "100%",
