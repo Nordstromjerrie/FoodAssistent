@@ -153,19 +153,11 @@ const deleteRecipe = async (id: number) => {
           Create new Recipe
         </button>
           
-          
-          
-        
-        
       </div>
      
      <div style ={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
-      <Link href="/recipes" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>View all info about recipes</Link>
+      <Link href="/recipes" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>View all recipes</Link>
     </div>
-     
-      <p style={{ marginTop: 12 }}>
-         Preview of avalible recipes: {visible.length}
-      </p>
       
       {error && <p style={{ marginTop: 12 }}>❌ {error}</p>}
 
