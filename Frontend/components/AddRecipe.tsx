@@ -100,7 +100,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             value={formData.title}
             onChange={handleChange}
             placeholder="Enter recipe title"
-            className="p-2 border border-orange-400 rounded-lg w-full"
+            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           />
         </div>
 
@@ -113,7 +113,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             value={formData.instructions}
             onChange={handleChange}
             placeholder="Enter recipe instructions"
-            className="p-2 border border-orange-400 rounded-lg w-full resize-none"
+            className="p-2 border border-orange-400 rounded-lg w-full resize-none focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           />
         </div>
 
@@ -128,7 +128,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             min={1}
             value={formData.cookingTime}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg w-full"
+            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           />
         </div>
 
@@ -139,7 +139,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             name="difficulty"
             value={formData.difficulty}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black"
+            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           >
             <option value="EASY">EASY</option>
             <option value="MEDIUM">MEDIUM</option>
@@ -154,7 +154,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             name="spicyLevel"
             value={formData.spicyLevel}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black"
+            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           >
             <option value="MILD">Mild</option>
             <option value="MEDIUM">Medium</option>
@@ -169,7 +169,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             name="mealType"
             value={formData.mealType}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black"
+            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           >
             <option value="BREAKFAST">Breakfast</option>
             <option value="LUNCH">Lunch</option>
@@ -187,7 +187,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             value={formData.imageUrl}
             onChange={handleChange}
             placeholder="Optional"
-            className="p-2 border border-orange-400 rounded-lg w-full"
+            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           />
         </div>
 
@@ -200,7 +200,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
             value={formData.calories}
             onChange={handleChange}
             placeholder="Optional"
-            className="p-2 border border-orange-400 rounded-lg w-full"
+            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
           />
         </div>
 
@@ -208,7 +208,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         <button
           type="submit"
           disabled={status.loading}
-          className="mt-4 p-2 border border-orange-400 rounded-lg hover:bg-orange-100 transition disabled:opacity-50"
+          className="mt-4 p-2 border border-orange-400 rounded-lg text-white bg-black hover:bg-orange-100 hover:text-black transition-colors disabled:opacity-50"
         >
           Save Recipe
         </button>
