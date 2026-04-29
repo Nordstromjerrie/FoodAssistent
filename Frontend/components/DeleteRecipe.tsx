@@ -1,30 +1,21 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import type { Recipe } from "@/types/recipe";
 
-type Recipe = {
+type Props = {
   id: number;
-  title: string;
+  onDeleted: (id: number) => void;
 };
 
-export default function DeleteRecipe() {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8080/recipe/get/all/recipes")
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((err) => {
-        console.error("Failed to load recipes:", err);
-      });
-  }, []);
-
-  const deleteRecipe = async (id: number) => {
+export default function DeleteRecipe({ id, onDeleted }: Props) {
+  const handleDelete = async () => {
     if (!confirm("Är du säker på att du vill ta bort receptet?")) return;
 
-    const res = await fetch(`http://localhost:8080/recipe/delete/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `http://localhost:8080/recipe/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (!res.ok) {
       const text = await res.text().catch(() => "");
@@ -32,39 +23,13 @@ export default function DeleteRecipe() {
       return;
     }
 
-    // Uppdatera UI direkt
-    setRecipes((prev) => prev.filter((r) => r.id !== id));
+    // Uppdatera parent state
+    onDeleted(id);
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-end",
-        gap: 20,
-        marginTop: 100,
-      }}
-    >
-        <div>
-        {recipes.map((r) => (
-  <div
-    key={r.id}
-    style={{
-      display: "flex",
-      justifyContent: "flex-end",
-      alignItems: "center",
-      marginBottom: 8,
-      width: "100%",
-      border: "1px solid orange", // 👈 gör varje rad tydlig
-      padding: 8,
-      borderRadius: 6,
-    }}
-  >
-    <span>{r.title}</span> {/* 👈 DU SAKNAR DENNA */}
-
     <button
-      onClick={() => deleteRecipe(r.id)}
+      onClick={handleDelete}
       style={{
         backgroundColor: "red",
         color: "white",
@@ -76,11 +41,5 @@ export default function DeleteRecipe() {
     >
       Delete
     </button>
-  </div>
-))}
-
-        {recipes.length === 0 && <p>Inga recept hittades.</p>}
-      </div>
-    </div>
   );
 }
