@@ -27,7 +27,7 @@ export default async function RecipesPage() {
     <main style={{ padding: 24 }}>
       
       <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 10, }}>Recipes</h1>
-      <Link href="/recipes-client" style={{ padding: "10px 14px", borderRadius: 10, marginTop: 12, border: "1px solid #ff9900" }}> Menu </Link>
+      
       
       <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
         {recipes.map((r) => (
@@ -37,9 +37,9 @@ export default async function RecipesPage() {
             style={{ border: "1px solid #ff9500", borderRadius: 12, padding: 12 }}
           >
                 <img
-  src={r.imageUrl}
+        src={r.imageUrl}
   
-  style={{ height:16, width: "15%", borderRadius: 12, marginLeft: 1200
+        style={{ height:16, width: "15%", borderRadius: 12, marginLeft: 1200
   }}
 />
             <div style={{ display: "flex",fontSize: 18, fontWeight: 600 }}>{r.title}</div>
