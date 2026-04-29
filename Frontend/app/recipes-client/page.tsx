@@ -6,14 +6,8 @@ import AddRecipe from "@/components/AddRecipe";
 import DeleteRecipe from "@/components/DeleteRecipe";
 import UpdateRecipe from "@/components/UpdateRecipe";
 import style from "styled-jsx/style";
+import type { Recipe } from "@/types/recipe";
 
-type Recipe = {
-  id: number;
-  title: string;
-  cookingTime?: number | null;
-  spicyLevel?: string;
-  //calories?: number | null; // lägg till sen när backend har det
-};
 
 type SortMode = "title-asc" | "title-desc" | "time-asc" | "time-desc";
 

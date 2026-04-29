@@ -1,14 +1,6 @@
 "use client";
 import { useState } from "react";
-
-type Recipe = {
-  id: number;
-  title: string;
-  cookingTime?: number | null;
-  spicyLevel?: string;
-  instructions?: string;
-  calories?: number | null;
-};
+import type { Recipe } from "@/types/recipe";
 
 export default function UpdateRecipe({
   recipe,
