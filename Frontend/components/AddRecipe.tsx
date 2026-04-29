@@ -20,7 +20,9 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
   });
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -42,19 +44,19 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         mealType: formData.mealType,
       };
 
-    const res = await fetch("http://localhost:8080/recipe/new", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-});
+      const res = await fetch("http://localhost:8080/recipe/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const text = await res.text();
-    console.log("STATUS:", res.status);
-    console.log("RESPONSE:", text);
+      const text = await res.text();
+      console.log("STATUS:", res.status);
+      console.log("RESPONSE:", text);
 
-    if (!res.ok) {
-    throw new Error(text);
-}
+      if (!res.ok) {
+        throw new Error(text);
+      }
 
       setStatus({
         loading: false,
@@ -62,99 +64,110 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         success: "Recipe created successfully!",
       });
     } catch (err: any) {
-    console.error("CREATE ERROR:", err);
+      console.error("CREATE ERROR:", err);
 
-    setStatus({
+      setStatus({
         loading: false,
         error: err.message ?? "Failed to create recipe",
-        success: ""
-    });
-}
+        success: "",
+      });
+    }
   }
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="float-right px-3 py-1 border border-orange-400 rounded-lg hover:bg-orange-100 transition"
-      >
-        X
-      </button>
-
-      {/* Title */}
-      <div className="flex justify-center mb-6">
-        <h1 className=" bg-red-500 border-4 border-orange-400 rounded-xl text-xl font-light px-10 py-3 text-center">
+      <div className="relative flex justify-center mb-6">
+        <h1 className="text-2xl font-semibold text-white/90 animate-fade-in">
           New Recipe
         </h1>
-      </div>
 
+        <button
+          onClick={onClose}
+          className="absolute right-0 px-2 py-1 rounded-md bg-[#1a1a1d] text-white border border-white/10 hover:bg-white/10 transition"
+        >
+          X
+        </button>
+      </div>
       {/* Form */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* Title */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Recipe Title:</label>
+          <label htmlFor="title" className="text-base text-gray-300">
+            Recipe Title
+          </label>
+
           <input
+            id="title"
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
             placeholder="Enter recipe title"
-            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           />
         </div>
 
         {/* Instructions */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Instructions:</label>
+          <label htmlFor="instructions" className="text-base text-gray-300">
+            Instructions:
+          </label>
           <textarea
-            rows={12}
+            id="instructions"
             name="instructions"
+            rows={12}
             value={formData.instructions}
             onChange={handleChange}
             placeholder="Enter recipe instructions"
-            className="p-2 border border-orange-400 rounded-lg w-full resize-none focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/10 focus:border-white/20 transition resize-none"
           />
         </div>
 
         {/* Cooking time */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">
-            Cooking Time (minutes):
+          <label htmlFor="cooking time" className="text-base text-gray-300">
+            Cooking time(minutes):
           </label>
           <input
+            id="cooking time"
             type="number"
             name="cookingTime"
             min={1}
             value={formData.cookingTime}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           />
         </div>
 
         {/* Difficulty */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Difficulty:</label>
+          <label htmlFor="difficulty" className="text-base text-gray-300">
+            Difficulty:
+          </label>
           <select
+            id="difficulty"
             name="difficulty"
             value={formData.difficulty}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           >
             <option value="EASY">EASY</option>
             <option value="MEDIUM">MEDIUM</option>
-            <option value="HOT">HOT</option>
+            <option value="HARD">HARD</option>
           </select>
         </div>
 
         {/* Spicy */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Spicy Level:</label>
+          <label htmlFor="spicy-level" className="text-base text-gray-300">
+            Spicy-level:
+          </label>
           <select
+            id="spicy-level"
             name="spicyLevel"
             value={formData.spicyLevel}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           >
             <option value="MILD">Mild</option>
             <option value="MEDIUM">Medium</option>
@@ -164,12 +177,15 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
 
         {/* Meal type */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Meal Type:</label>
+          <label htmlFor="meal type" className="text-base text-gray-300">
+            Meal type:
+          </label>
           <select
+            id="meal type"
             name="mealType"
             value={formData.mealType}
             onChange={handleChange}
-            className="p-2 border border-orange-400 rounded-lg bg-black focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           >
             <option value="BREAKFAST">Breakfast</option>
             <option value="LUNCH">Lunch</option>
@@ -180,27 +196,33 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
 
         {/* Image URL */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">Image URL:</label>
+          <label htmlFor="imageurl" className="text-base text-gray-300">
+            Imageurl:
+          </label>
           <input
+            id="imageurl"
             type="text"
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleChange}
             placeholder="Optional"
-            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           />
         </div>
 
         {/* Calories */}
         <div className="flex flex-col gap-2">
-          <label className="text-lg font-light">kcal/100g:</label>
+          <label htmlFor="kcal/100g" className="text-base text-gray-300">
+            Kcal/100g:
+          </label>
           <input
+            id="kcal/100g"
             type="number"
             name="calories"
             value={formData.calories}
             onChange={handleChange}
             placeholder="Optional"
-            className="p-2 border border-orange-400 rounded-lg w-full focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500"
+            className="p-2 rounded-lg w-full bg-[#1a1a1d] text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition"
           />
         </div>
 
@@ -208,16 +230,14 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         <button
           type="submit"
           disabled={status.loading}
-          className="mt-4 p-2 border border-orange-400 rounded-lg text-white bg-black hover:bg-orange-100 hover:text-black transition-colors disabled:opacity-50"
+          className="mt-4 w-full px-5 py-3 rounded-md bg-[#1a1a1d] text-sm text-white border border-white/10 hover:bg-white/10 transition-colors disabled:opacity-50"
         >
           Save Recipe
         </button>
       </form>
 
       {/* Status */}
-      {status.error && (
-        <p className="text-red-500 mt-3">{status.error}</p>
-      )}
+      {status.error && <p className="text-red-500 mt-3">{status.error}</p>}
       {status.success && (
         <p className="text-green-500 mt-3">{status.success}</p>
       )}
