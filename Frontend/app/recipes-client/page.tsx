@@ -209,7 +209,7 @@ const deleteRecipe = async (id: number) => {
     onClick={() => setShowAdd(false)}
   >
     <div
-      className="bg-[#010101] p-5 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto"
+      className="bg-[#141416] p-5 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto"
       onClick={(e) => e.stopPropagation()}
     >
       <AddRecipe onClose={() => setShowAdd(false)} />
