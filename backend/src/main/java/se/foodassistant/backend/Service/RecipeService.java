@@ -51,6 +51,7 @@ public class RecipeService {
             recipesDto.setId(recipe.getId());
             recipesDto.setSpicyLevel(recipe.getSpicyLevel());
             recipesDto.setMealType(recipe.getMealType());
+            recipesDto.setImageUrl(recipe.getImageUrl());
             recipeDto.add(recipesDto);
 
 
