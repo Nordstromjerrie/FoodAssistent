@@ -10,9 +10,9 @@ export default function RecipesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Hämta data
   useEffect(() => {
     const fetchRecipes = async () => {
+      
       try {
         const res = await fetch(
           "http://localhost:8080/recipe/get/all/recipes"
@@ -22,60 +22,78 @@ export default function RecipesPage() {
 
         const data = await res.json();
         setRecipes(data);
+        console.log(data);
       } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
+      
     };
 
     fetchRecipes();
   }, []);
 
-  // DELETE (uppdaterar state direkt)
   const handleDelete = (id: number) => {
     setRecipes((prev) => prev.filter((r) => r.id !== id));
   };
 
-  if (loading) return <p>Loading recipes...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) {
+    return (
+      <p className="text-center mt-10 text-gray-400">
+        Loading recipes...
+      </p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p className="text-center mt-10 text-red-500">
+        Error: {error}
+      </p>
+    );
+  }
 
   return (
-    <main style={{ padding: 24 }}>
-      <h1 style={{ fontSize: 28, fontWeight: 700 }}>Recipes</h1>
+    <main className="min-h-screen bg-black text-white p-6">
+      <h1 className="text-3xl font-bold mb-6 text-orange-400">
+        Recipes
+      </h1>
 
-      <div style={{ marginTop: 16, display: "grid", gap: 12 }}>
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {recipes.map((r) => (
           <div
             key={r.id}
-            style={{
-              border: "1px solid #ff9500",
-              borderRadius: 12,
-              padding: 12,
-            }}
+            className="border border-orange-400 rounded-xl p-4 bg-[#121212] shadow-md hover:scale-[1.01] transition"
           >
+            {/* IMAGE */}
             <img
               src={r.imageUrl}
-              style={{
-                height: 80,
-                width: "15%",
-                borderRadius: 12,
-              }}
+              className="h-32 w-full object-cover rounded-lg mb-3"
             />
 
-            <div style={{ fontSize: 18, fontWeight: 600 }}>
+            {/* TITLE */}
+            <div className="text-lg font-semibold text-orange-400">
               {r.title}
             </div>
 
-            <div>Difficulty: {r.difficulty}</div>
-            <div>Spicy Level: {r.spicyLevel}</div>
-            <div>Cooking time: {r.cookingTime ?? "-"} min</div>
-            <div>Calories: {r.calories ?? "-"}</div>
-            <div>Instructions: {r.instructions}</div>
-            <div>Meal Type: {r.mealType}</div>
+            {/* INFO */}
+            <div className="text-sm text-gray-300 mt-2 space-y-1">
+              <div>Difficulty: {r.difficulty}</div>
+              <div>Spicy Level: {r.spicyLevel}</div>
+              <div>
+                Cooking time: {r.cookingTime ?? "-"} min
+              </div>
+              <div>Calories: {r.calories ?? "-"}</div>
+              <div>Meal Type: {r.mealType}</div>
+            </div>
 
-            {/* ACTION BUTTONS */}
-            <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+            <div className="text-sm text-gray-400 mt-2 line-clamp-3">
+              {r.instructions}
+            </div>
+
+            {/* ACTIONS */}
+            <div className="flex gap-2 mt-4">
               <DeleteRecipe
                 id={r.id}
                 onDeleted={handleDelete}
