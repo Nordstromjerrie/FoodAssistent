@@ -34,7 +34,7 @@ public class RecipeDto {
     @JsonProperty("mealType")
     private MealType mealType;
     private long id;
-
+    private String imageUrl;
     public MealType getMealType() {
         return mealType;
     }
@@ -49,6 +49,14 @@ public class RecipeDto {
 
     public long getId() {
         return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Difficulty getDifficulty() {

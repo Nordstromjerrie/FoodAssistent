@@ -24,6 +24,18 @@ public class Recipe {
     @Enumerated(EnumType.STRING)
     private MealType mealType;
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    private String imageUrl;
+
+
+
     public MealType getMealType() {
         return mealType;
     }

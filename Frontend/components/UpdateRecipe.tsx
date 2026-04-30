@@ -119,9 +119,9 @@ const [spicyLevel, setSpicyLevel] = useState(() => {
 
             {/* SPICY LEVEL */}
             <select
-  value={spicyLevel}
-  onChange={(e) => setSpicyLevel(e.target.value)}
-  style={{ width: "100%", marginBottom: 10 }}
+            value={spicyLevel}
+            onChange={(e) => setSpicyLevel(e.target.value)}
+            style={{ width: "100%", marginBottom: 10 }}
 >
   <option value="">Select spicy level</option>
   <option value="MILD">MILD</option>
