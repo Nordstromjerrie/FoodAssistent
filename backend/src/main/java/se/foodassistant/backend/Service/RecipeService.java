@@ -25,6 +25,7 @@ public class RecipeService {
         entity.setMealType(dto.getMealType());
         entity.setSpicyLevel(dto.getSpicyLevel());
         entity.setDifficulty(dto.getDifficulty());
+        entity.setImageUrl(dto.getImageUrl());
 
         return recipeRepository.save(entity);
     }
