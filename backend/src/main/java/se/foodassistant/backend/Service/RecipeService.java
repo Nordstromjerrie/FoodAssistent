@@ -70,6 +70,7 @@ public class RecipeService {
         recipe.setDifficulty(dto.getDifficulty());
         recipe.setSpicyLevel(dto.getSpicyLevel());
         recipe.setCalories(dto.getCalories());
+        recipe.setImageUrl(dto.getImageUrl());
         Recipe saved = recipeRepository.save(recipe);
 
         return dto;
