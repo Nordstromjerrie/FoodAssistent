@@ -13,7 +13,7 @@ public class RecipeDto {
     private String title;
 
     @NotBlank(message = "Instructions cannot be empty")
-    @JsonProperty("instructions")
+    @JsonProperty("Instructions")
     private String Instructions;
 
     @NotNull(message = "Cooking time is required")
@@ -95,8 +95,8 @@ public class RecipeDto {
         return cookingTime;
     }
 
-    public void setCookingTime(Integer cockingTime) {
-        this.cookingTime = cockingTime;
+    public void setCookingTime(Integer cookingTime) {
+        this.cookingTime = cookingTime;
     }
     public Integer getCalories() {
         return calories;

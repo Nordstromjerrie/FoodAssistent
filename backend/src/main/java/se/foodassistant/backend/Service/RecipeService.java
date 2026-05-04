@@ -21,10 +21,10 @@ public class RecipeService {
         entity.setInstructions(dto.getInstructions());
         entity.setTitle(dto.getTitle());
         entity.setCookingTime(dto.getCookingTime());
-        entity.setCalories(dto.getCookingTime());
+        entity.setCalories(dto.getCalories());
         entity.setMealType(dto.getMealType());
         entity.setSpicyLevel(dto.getSpicyLevel());
-
+        entity.setDifficulty(dto.getDifficulty());
 
         return recipeRepository.save(entity);
     }
@@ -44,7 +44,7 @@ public class RecipeService {
         for (Recipe recipe: recipes){
             RecipeDto recipesDto = new RecipeDto();
             recipesDto.setTitle(recipe.getTitle());
-            recipesDto.setInstructions(recipe.getTitle());
+            recipesDto.setInstructions(recipe.getInstructions());
             recipesDto.setCalories(recipe.getCalories());
             recipesDto.setCookingTime(recipe.getCookingTime());
             recipesDto.setDifficulty(recipe.getDifficulty());
