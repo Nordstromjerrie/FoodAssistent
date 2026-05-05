@@ -1,0 +1,7 @@
+fel och felsökningar som har uppstått. 
+
+Tailwind har inte laddat in för vi har inte haft korrekt inställningar i postcss.config.mjs fil. 
+
+hade ett problem i db med att vi inte skrivit MEDIUM i enum utan EASY och därför kunde vi inte uppdatera eller skapa recept när vi vi ville använda Medium. 
+
+

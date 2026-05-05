@@ -230,7 +230,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         <button
           type="submit"
           disabled={status.loading}
-          className="mt-4 w-full px-5 py-3 rounded-md bg-[#1a1a1d] text-sm text-white border border-white/10 hover:bg-white/10 transition-colors disabled:opacity-50"
+          className="mt-4 w-full px-5 py-3 rounded-md bg-green-500 text-sm text-white border border-white/10 hover:bg-white/10 transition-colors disabled:opacity-50"
         >
           Save Recipe
         </button>
