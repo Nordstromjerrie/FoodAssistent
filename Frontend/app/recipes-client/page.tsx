@@ -106,7 +106,7 @@ const deleteRecipe = async (id: number) => {
      />
    
    <main className= "p-4">
-      <h1 className= " text-5xl font-bold text-center text-white">Foodassistent</h1>"
+      <h1 className= " text-5xl font-bold text-center text-white">Foodassistent</h1>
      <h2 className="text-3xl font-semibold text-left .italic mb-8 ml-12 -rotate-5 animate-pulse inline-block ml-12 ">Your digital recipe book!</h2>
       
         
@@ -138,7 +138,7 @@ const deleteRecipe = async (id: number) => {
         </button>
           
       </div>
-     {/* className= "mt-4 flex gap-3 justify-center"*/}
+     
      <div className= "mt-4 flex gap-3 justify-left">
       <Link href="/recipes" className="p-2 rounded-lg border border-yellow-600">View all recipes</Link>
     </div>
