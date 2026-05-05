@@ -105,87 +105,66 @@ const deleteRecipe = async (id: number) => {
     }}
      />
    
-   <main style={{padding:10}}>
-      <h1 style={{ fontSize: 48, fontWeight: 700,  textAlign: "center",  }}>Foodassistent</h1>
-      <h2 style={{ fontSize: 28,
-         fontWeight: 600,
-          textAlign: "left",
-          fontStyle: "italic",
-          transform:"rotate(-5deg)",
-           marginBottom:20,
-          animation: "pulse 2s ease-in-out infinite",
-           display: "inline-block",
-           marginLeft: 50,
-            
-              }}>Your digital recipe book!</h2>
-
-      <div style={{ marginTop: 10, display: "flex", gap: 12, alignItems: "center" }}>
-        <input
+   <main className= "p-4">
+      <h1 className= " text-5xl font-bold text-center text-white">Foodassistent</h1>"
+     <h2 className="text-3xl font-semibold text-left .italic mb-8 ml-12 -rotate-5 animate-pulse inline-block ml-12 ">Your digital recipe book!</h2>
+      
+        
+      <div  className="p-2 flex gap-3 object-center justify-left">        
+      <input
           placeholder="Search recipes..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          style={{ padding: 10, border: "1px solid #ff9900", borderRadius: 10, width: 320 }}
-        />
-        
+          className="p-2 rounded-lg border border-yellow-600"        />
+        {/* className="p-4 ¨rounded-sm orange " */}
         <select
           value={sortMode}
           onChange={(e) => setSortMode(e.target.value as SortMode)}
-          style={{ padding: 10, border: "1px solid #ff9900", borderRadius: 10, }}
+          className="px-3 rounded-lg border border-yellow-600"
         >
-          <option value="title-asc" style={{backgroundColor:"#282828"}}>Name A–Ö</option>
-          <option value="title-desc" style={{backgroundColor:"#282828"}}>Name Ö–A</option>
-          <option value="time-asc" style={{backgroundColor:"#282828"}}>Time (shortest first)</option>
-          <option value="time-desc" style={{backgroundColor:"#282828"}}>Time (longest first)</option>
-          <option value="Calories-asc" style={{backgroundColor:"#282828"}}>Calories (Low to high)</option>
-          <option value="Calories-desc" style={{backgroundColor:"#282828"}}>Calories (High to low)</option>
+          <option value="title-asc" className="bg-black">Name A–Ö</option>
+          <option value="title-desc" className="bg-black">Name Ö–A</option>
+          <option value="time-asc" className="bg-black">Time (shortest first)</option>
+          <option value="time-desc" className="bg-black">Time (longest first)</option>
+          <option value="Calories-asc" className="bg-black">Calories (Low to high)</option>
+          <option value="Calories-desc"className="bg-black">Calories (High to low)</option>
         </select>
 
         <button
           onClick={() => setShowAdd(true)}
-          style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}
-        >
+          className="px-3 rounded-lg border border-yellow-600"
+       >
           Create new Recipe
         </button>
           
       </div>
-     
-     <div style ={{ marginTop: 16, display: "flex", gap: 12, alignItems: "center" }}>
-      <Link href="/recipes" style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #ff9900" }}>View all recipes</Link>
+     {/* className= "mt-4 flex gap-3 justify-center"*/}
+     <div className= "mt-4 flex gap-3 justify-left">
+      <Link href="/recipes" className="p-2 rounded-lg border border-yellow-600">View all recipes</Link>
     </div>
       
-      {error && <p style={{ marginTop: 12 }}>❌ {error}</p>}
+      {error && <p className="mt-3">❌ {error}</p>}
 
-      <div style={{ marginTop: 12, display: "grid", gap: 12 }}>
+      <div className= "mt-4 gap-3 grid">
         {visible.map((r) => (
   <div
     key={r.id}
-    style={{
-      border: "1px solid #ff9900",
-      borderRadius: 12,
-      padding: 12,
-    }}
+    className="border border-yellow-600 rounded-lg p-4"
+ 
   >
-    <div style={{ fontSize: 18, fontWeight: 600 }}>{r.title}</div>
+     
+    <div className="text-lg font-semibold">{r.title}</div>
     <div>Cooking time: {r.cookingTime ?? "-"} min</div>
     <div>Spicy Level: {r.spicyLevel ?? "-"}</div>
 
     {/* KNAPPAR */}
-    <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-      
+    <div className="flex gap-2 mt-2">
+    
       {/* DELETE */}
       <button
         onClick={() => deleteRecipe(r.id)}
-        style={{
-          backgroundColor: "red",
-          color: "white",
-          border: "none",
-          padding: "4px 8px",
-          cursor: "pointer",
-          borderRadius: 4,
-        }}
-      >
-        Delete
-      </button>
+        className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer"
+        >Delete</button>
 
       {/* UPDATE 👇 HÄR */}
       <UpdateRecipe

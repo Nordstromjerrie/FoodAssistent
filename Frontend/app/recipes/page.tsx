@@ -67,9 +67,9 @@ export default function RecipesPage() {
             className="border border-orange-400 rounded-xl p-4 bg-[#121212] shadow-md hover:scale-[1.01] transition"
           >
             {/* IMAGE */}
-            <img
+            <img 
               src={r.imageUrl}
-              className="h-32 w-full object-cover rounded-lg mb-3"
+              className=" h-32 w-full object-cover object-bottom rounded-lg mb-3"
             />
 
             {/* TITLE */}
