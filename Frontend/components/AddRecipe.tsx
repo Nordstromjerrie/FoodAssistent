@@ -1,7 +1,8 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
-export default function AddRecipe({ onClose }: { onClose: () => void }) {
+export default function AddRecipe({ onClose, onSuccess }: { onClose: () => void,  onSuccess: () => void}) {
   const [formData, setFormData] = useState({
     title: "",
     instructions: "",
@@ -63,6 +64,7 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
         error: "",
         success: "Recipe created successfully!",
       });
+      onSuccess();
     } catch (err: any) {
       console.error("CREATE ERROR:", err);
 
@@ -196,9 +198,17 @@ export default function AddRecipe({ onClose }: { onClose: () => void }) {
 
         {/* Image URL */}
         <div className="flex flex-col gap-2">
+         <div className="flex gap-2">
           <label htmlFor="imageurl" className="text-base text-gray-300">
             Imageurl:
           </label>
+          <Link href={"https://unsplash.com/"}
+          target="blank_"
+          className="bg-orange-400 border rounded-sm text-black px-1"
+          >
+            Link to free website to add a picture to your recipe 
+          </Link>
+         </div>
           <input
             id="imageurl"
             type="text"

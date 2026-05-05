@@ -30,18 +30,18 @@ const deleteRecipe = async (id: number) => {
   const [sortMode, setSortMode] = useState<SortMode>("title-asc");
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function loadRecipes() {
-      try {
-        setError(null);
-        const res = await fetch("http://localhost:8080/recipe/get/all/recipes");
-        if (!res.ok) throw new Error(`Backend error: ${res.status}`);
-        const data = await res.json();
-        setRecipes(data);
-      } catch (e: any) {
-        setError(e.message ?? "Failed to fetch");
-      }
+  async function loadRecipes() {
+    try {
+      setError(null);
+      const res = await fetch("http://localhost:8080/recipe/get/all/recipes");
+      if (!res.ok) throw new Error(`Backend error: ${res.status}`);
+      const data = await res.json();
+      setRecipes(data);
+    } catch (e: any) {
+      setError(e.message ?? "Failed to fetch");
     }
+  }
+  useEffect(() => {
     loadRecipes();
   }, []);
 
@@ -191,7 +191,11 @@ const deleteRecipe = async (id: number) => {
       className="bg-[#141416] p-5 rounded-xl w-[600px] max-h-[90vh] overflow-y-auto"
       onClick={(e) => e.stopPropagation()}
     >
-      <AddRecipe onClose={() => setShowAdd(false)} />
+      <AddRecipe onClose={() => setShowAdd(false)} 
+        onSuccess={()=> {
+          loadRecipes();
+          setShowAdd(false);
+        }}/>
     </div>
   </div>
 )}

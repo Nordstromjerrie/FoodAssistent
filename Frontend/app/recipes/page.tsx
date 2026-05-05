@@ -69,7 +69,7 @@ export default function RecipesPage() {
             {/* IMAGE */}
             <img 
               src={r.imageUrl}
-              className=" h-32 w-full object-cover object-bottom rounded-lg mb-3"
+              className=" w-full  aspect-4/3 object-cover object-bottom rounded-lg mb-3"
             />
 
             {/* TITLE */}
